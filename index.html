@@ -233,28 +233,28 @@ document.getElementById("formulaire").addEventListener("submit", function(e){
     }
 
     let message = `
-📋 INSCRIPTION RETRAITE SPIRITUELLE
+Retraite annuelle de la Jeunesse Vivante en Mission
 
-🏛 Centre Évangélique La Parole Éternelle Goma
+Centre Évangélique La Parole Éternelle Goma
 
-👤 NOM : ${val("nom")}
-🚻 SEXE : ${val("sexe")}
-🎂 ÂGE : ${val("age")}
-📞 TÉL : ${val("tel")}
-⛪ ÉGLISE : ${val("eglise")}
+NOM : ${val("nom")}
+SEXE : ${val("sexe")}
+ÂGE : ${val("age")}
+TÉL : ${val("tel")}
+ÉGLISE : ${val("eglise")}
 
-🩺 SANTÉ
+SANTÉ
 Allergies : ${val("allergies")} - ${val("allergies_prec")}
 Maladie : ${val("maladie")} - ${val("maladie_prec")}
 Traitement : ${val("traitement")} - ${val("traitement_prec")}
 Régime : ${val("regime")} - ${val("regime_prec")}
 
-🚨 URGENCE
+URGENCE
 Nom : ${val("urgence_nom")}
 Lien : ${val("urgence_lien")}
 Tel : ${val("urgence_tel")}
 
-👥 PARTICIPATION : ${val("participation")}
+PARTICIPATION : ${val("participation")}
 `;
 
     let url = "https://wa.me/" + numeroWhatsApp + "?text=" + encodeURIComponent(message);
