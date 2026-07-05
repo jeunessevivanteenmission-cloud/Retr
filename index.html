@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inscription Retraite Spirituelle</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Urbanist', sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    background: radial-gradient(circle at top,#1e293b,#0f172a);
+    color:#fff;
+}
+
+.container{
+    width:100%;
+    max-width:800px;
+    background: rgba(17, 24, 39, 0.75);
+    backdrop-filter: blur(12px);
+    border-radius:18px;
+    padding:30px;
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+    display:flex;
+    justify-content:center;
+    margin-bottom:10px;
+}
+
+.logo img{
+    width:90px;
+    height:90px;
+    object-fit:contain;
+    border-radius:50%;
+    background:rgba(255,255,255,0.05);
+    padding:8px;
+}
+
+.top-title{
+    text-align:center;
+    font-size:16px;
+    color:#facc15;
+    margin-bottom:10px;
+    font-weight:600;
+}
+
+h1{
+    text-align:center;
+    color:#38bdf8;
+    margin-bottom:20px;
+    font-size:22px;
+}
+
+h2{
+    margin-top:20px;
+    font-size:15px;
+    color:#22c55e;
+    border-left:4px solid #22c55e;
+    padding-left:10px;
+}
+
+label{
+    display:block;
+    margin-top:12px;
+    font-size:13px;
+    color:#cbd5e1;
+}
+
+input, select{
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04);
+    color:#fff;
+    outline:none;
+}
+
+.radio{
+    margin-top:10px;
+    display:flex;
+    gap:10px;
+    align-items:center;
+    font-size:13px;
+}
+
+button{
+    width:100%;
+    margin-top:25px;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background: linear-gradient(135deg,#22c55e,#16a34a);
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">
+    <img src="logo.png" alt="Logo">
+</div>
+
+<div class="top-title">
+Centre Évangélique La Parole Éternelle Goma
+</div>
+
+<h1>Retraite annuelle de la Jeunesse Vivante en Mission</h1>
+
+<form id="formulaire">
+
+<h2>Informations personnelles</h2>
+
+<label>Nom et prénom</label>
+<input type="text" id="nom" required>
+
+<label>Sexe</label>
+<select id="sexe">
+<option>Homme</option>
+<option>Femme</option>
+</select>
+
+<label>Âge</label>
+<input type="number" id="age" required>
+
+<label>Numéro de téléphone</label>
+<input type="text" id="tel" required>
+
+<label>Église / Assemblée</label>
+<input type="text" id="eglise">
+
+<h2>Informations médicales</h2>
+
+<label>Allergies</label>
+<select id="allergies">
+<option>Non</option>
+<option>Oui</option>
+</select>
+<input type="text" id="allergies_prec">
+
+<label>Maladie</label>
+<select id="maladie">
+<option>Non</option>
+<option>Oui</option>
+</select>
+<input type="text" id="maladie_prec">
+
+<label>Traitement</label>
+<select id="traitement">
+<option>Non</option>
+<option>Oui</option>
+</select>
+<input type="text" id="traitement_prec">
+
+<label>Régime alimentaire</label>
+<select id="regime">
+<option>Non</option>
+<option>Oui</option>
+</select>
+<input type="text" id="regime_prec">
+
+<h2>Urgence</h2>
+
+<label>Nom</label>
+<input type="text" id="urgence_nom">
+
+<label>Lien de parenté</label>
+<select id="urgence_lien">
+<option>Père</option>
+<option>Mère</option>
+<option>Frère/Sœur</option>
+<option>Conjoint(e)</option>
+<option>Autre</option>
+</select>
+
+<label>Téléphone</label>
+<input type="text" id="urgence_tel">
+
+<h2>Participation</h2>
+
+<label>Mode de participation</label>
+<select id="participation">
+<option>Seul(e)</option>
+<option>En famille</option>
+</select>
+
+<h2>WhatsApp</h2>
+
+<div class="radio">
+<input type="radio" name="mode" value="Normal" checked> WhatsApp normal
+</div>
+
+<div class="radio">
+<input type="radio" name="mode" value="Business"> WhatsApp Business
+</div>
+
+<label class="radio">
+<input type="checkbox" id="confirm" required>
+J’ai confirmé mon paiement et ma présence
+</label>
+
+<button type="submit">Réserver votre place</button>
+
+</form>
+
+</div>
+
+<script>
+
+const numeroWhatsApp = "243970921477";
+
+document.getElementById("formulaire").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    if(!document.getElementById("confirm").checked){
+        alert("Veuillez confirmer votre paiement.");
+        return;
+    }
+
+    let mode = document.querySelector('input[name="mode"]:checked').value;
+
+    function val(id){
+        return document.getElementById(id).value || "Non précisé";
+    }
+
+    let message = `
+📋 INSCRIPTION RETRAITE SPIRITUELLE
+
+🏛 Centre Évangélique La Parole Éternelle Goma
+
+👤 NOM : ${val("nom")}
+🚻 SEXE : ${val("sexe")}
+🎂 ÂGE : ${val("age")}
+📞 TÉL : ${val("tel")}
+⛪ ÉGLISE : ${val("eglise")}
+
+🩺 SANTÉ
+Allergies : ${val("allergies")} - ${val("allergies_prec")}
+Maladie : ${val("maladie")} - ${val("maladie_prec")}
+Traitement : ${val("traitement")} - ${val("traitement_prec")}
+Régime : ${val("regime")} - ${val("regime_prec")}
+
+🚨 URGENCE
+Nom : ${val("urgence_nom")}
+Lien : ${val("urgence_lien")}
+Tel : ${val("urgence_tel")}
+
+👥 PARTICIPATION : ${val("participation")}
+
+📲 MODE WHATSAPP : ${mode}
+`;
+
+    let url = "https://wa.me/" + numeroWhatsApp + "?text=" + encodeURIComponent(message);
+    window.open(url, "_blank");
+});
+
+</script>
+
+</body>
+</html>
